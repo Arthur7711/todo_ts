@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import styles from "./App.module.css";
 
 function App() {
+  const [val, setVal] = useState("");
+  const [wearablesList, setWearablesList] = useState<string[]>([]);
+
+  function adding(e: React.ChangeEvent<HTMLInputElement>) {
+    setVal(e.target.value);
+  }
+  function newElems() {
+    setWearablesList([...wearablesList, val]);
+    setVal("");
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.app}>
+      <input value={val} onChange={adding} />
+      <button onClick={newElems}>add</button>
+      {wearablesList &&
+        wearablesList.map((el: string, i: number) => <p key={i}>{el}</p>)}
     </div>
   );
 }
