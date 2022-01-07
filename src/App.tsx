@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./App.module.css";
+import { MyInp } from "./components/inputs/MyInp";
 
 const App: React.FC = () => {
   const [val, setVal] = useState("");
@@ -15,7 +16,7 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.app}>
-      <input value={val} onChange={adding} />
+      <MyInp val={val} setVal={setVal} adding={adding} />
       <button onClick={newElems}>add</button>
       {wearablesList &&
         wearablesList.map((el: string, i: number) => <p key={i}>{el}</p>)}
