@@ -1,13 +1,13 @@
 import { useState } from "react";
 import styles from "./App.module.css";
 
-function App() {
+const App: React.FC = () => {
   const [val, setVal] = useState("");
   const [wearablesList, setWearablesList] = useState<string[]>([]);
-
   function adding(e: React.ChangeEvent<HTMLInputElement>) {
     setVal(e.target.value);
   }
+
   function newElems() {
     setWearablesList([...wearablesList, val]);
     setVal("");
@@ -21,6 +21,6 @@ function App() {
         wearablesList.map((el: string, i: number) => <p key={i}>{el}</p>)}
     </div>
   );
-}
+};
 
 export default App;
