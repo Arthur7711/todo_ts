@@ -23,7 +23,7 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.app}>
-      <MyInp val={val} setVal={setVal} adding={adding} />
+      <MyInp val={val} adding={adding} />
       <button onClick={newElems}>add</button>
       {wearablesList &&
         wearablesList.map((el: string, i: number) => (
